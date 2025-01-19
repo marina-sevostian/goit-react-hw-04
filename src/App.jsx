@@ -1,4 +1,5 @@
-// import { useState } from 'react';
+// import { useEffect, useState } from 'react';
+// import fetchImages from './services/api';
 import './App.css';
 
 function App() {
