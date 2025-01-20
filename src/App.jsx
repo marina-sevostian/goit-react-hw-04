@@ -7,6 +7,8 @@ import Loader from './components/Loader/Loader';
 import { Toaster } from 'react-hot-toast';
 import LoaderMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import './App.css';
+import Modal from 'react-modal';
+import ImageModal from './components/ImageModal/ImageModal';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -15,6 +17,12 @@ function App() {
   const [image, setImage] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectImage, setSelectImage] = useState(0);
+
+  useEffect(() => {
+    Modal.setAppElement('#root');
+  }, []);
 
   useEffect(() => {
     if (!query) return;
@@ -45,16 +53,30 @@ function App() {
     setPage(prev => prev + 1);
   };
 
+  const openModal = image => {
+    setSelectImage(image);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       <SearchBar setQuery={handleSetQuery} />
       <Toaster position="top-right" />
       {isError && <ErrorMessage />}
-      <ImageGallery images={image} />
+      <ImageGallery images={image} openModal={openModal} />
       {isLoading && <Loader />}
       {image.length > 0 && page < totalPages && (
         <LoaderMoreBtn changePage={handleChangePage} />
       )}
+      <ImageModal
+        isOpen={modalIsOpen}
+        onCloseModal={closeModal}
+        image={selectImage}
+      />
     </>
   );
 }
