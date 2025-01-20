@@ -65,7 +65,7 @@ function App() {
   return (
     <>
       <SearchBar setQuery={handleSetQuery} />
-      <Toaster position="top-right" />
+      <Toaster position="top-left" />
       {isError && <ErrorMessage />}
       <ImageGallery images={image} openModal={openModal} />
       {isLoading && <Loader />}
