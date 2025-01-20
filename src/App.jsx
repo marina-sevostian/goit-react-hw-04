@@ -18,6 +18,7 @@ function App() {
         setIsError(false);
         const data = await fetchImages(query, page);
         setImage(prev => [...prev, ...data.results]);
+        console.log(data);
       } catch {
         setIsError(true);
       } finally {
