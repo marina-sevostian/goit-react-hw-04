@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import { LiaWindowCloseSolid } from 'react-icons/lia';
 import s from './ImageModal.module.css';
 
 const ImageModal = ({ isOpen, onCloseModal, image }) => {
@@ -9,7 +10,9 @@ const ImageModal = ({ isOpen, onCloseModal, image }) => {
       isOpen={isOpen}
       onRequestClose={onCloseModal}
     >
-      <button className={s.closeBtn} onClick={onCloseModal}></button>
+      <button className={s.closeBtn} onClick={onCloseModal}>
+        <LiaWindowCloseSolid size="35" />
+      </button>
       {image && (
         <div className={s.wrapImg}>
           <img

@@ -1,3 +1,4 @@
+import { IoSearchSharp } from 'react-icons/io5';
 import s from './SearchBar.module.css';
 
 import toast from 'react-hot-toast';
@@ -27,6 +28,7 @@ const SearchBar = ({ setQuery }) => {
           placeholder="Search images and photos"
         />
         <button className={s.btn} type="submit">
+          <IoSearchSharp size="20"/>
           Search
         </button>
       </form>
